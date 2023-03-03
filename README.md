@@ -12,7 +12,7 @@ Star this repo if you like what you see.
 ## 📸 Screenshots
 
 
-<img src="screenshots/1.jpg" width="250"/>
+<img src="Screenshot/1.jpg" width="250"/>
 <img src="screenshots/2.jpg" width="250"/> 
 <img src="screenshots/3.jpg" width="250"/> 
 
