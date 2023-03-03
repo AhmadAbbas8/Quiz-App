@@ -38,6 +38,6 @@ In the command terminal, run the following commands:
 
 - <a href="https://github.com/AhmadAbbas8">Github</a>
 
-- <a href="hhttps://www.facebook.com/AhmadAbbas08">Facebook</a>
+- <a href="https://www.facebook.com/AhmadAbbas08">Facebook</a>
 
 - <a href="https://www.linkedin.com/in/ahmadabbas8/">LinkedIn</a>
