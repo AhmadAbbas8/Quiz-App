@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/screen/app_cubit.dart';
 import 'package:quiz_app/screen/welcome_screen.dart';
+import 'app_state.dart';
 
 class ScoreScreen extends StatelessWidget {
   const ScoreScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class ScoreScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => WelcomeScreen(),
                       ),
-                          (route) => false);
+                      (route) => false);
                 },
                 child: Text(
                   'Redo'.toUpperCase(),
@@ -51,7 +52,7 @@ class ScoreScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 70),
                     Text(
-                      '${AppCubit.get(context).score * 10 } / ${AppCubit.get(context).question.length * 10}',
+                      '${AppCubit.get(context).score * 10} / ${AppCubit.get(context).question.length * 10}',
                       style: TextStyle(
                           fontSize: 35,
                           color: Colors.grey,
