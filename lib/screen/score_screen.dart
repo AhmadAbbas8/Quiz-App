@@ -28,7 +28,7 @@ class ScoreScreen extends StatelessWidget {
                 },
                 child: Text(
                   'Redo'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                 ),
@@ -43,22 +43,22 @@ class ScoreScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Score',
                       style: TextStyle(
                           fontSize: 35,
                           color: Colors.grey,
                           fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: 70),
+                    const SizedBox(height: 70),
                     Text(
                       '${AppCubit.get(context).score * 10} / ${AppCubit.get(context).question.length * 10}',
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 35,
                           color: Colors.grey,
                           fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: 70),
+                    const SizedBox(height: 70),
                   ],
                 ),
               ),

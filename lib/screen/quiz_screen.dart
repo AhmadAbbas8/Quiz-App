@@ -8,7 +8,7 @@ import 'package:quiz_app/screen/score_screen.dart';
 import 'app_state.dart';
 
 class QuizScreen extends StatelessWidget {
-  QuizScreen({Key? key}) : super(key: key);
+  const QuizScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +29,18 @@ class QuizScreen extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ScoreScreen(),
+                          builder: (context) => const ScoreScreen(),
                         ),
                         (route) => false);
                   }
                   myObj.pageController.nextPage(
-                    duration: Duration(milliseconds: 360),
+                    duration: const Duration(milliseconds: 360),
                     curve: Curves.ease,
                   );
                 },
                 child: Text(
                   'skip'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                 ),
@@ -55,19 +55,19 @@ class QuizScreen extends StatelessWidget {
               SafeArea(
                 child: Column(
                   children: [
-                    ProgressBar(),
-                    SizedBox(height: 20),
+                    const ProgressBar(),
+                    const SizedBox(height: 20),
                     Text.rich(
                       TextSpan(
                         text: 'Question ${myObj.currentQuestion + 1}/',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 30,
                         ),
                         children: [
                           TextSpan(
                             text: '${questions.length}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 25,
                               color: Colors.grey,
                             ),
@@ -75,10 +75,10 @@ class QuizScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(thickness: 5),
+                    const Divider(thickness: 5),
                     Expanded(
                       child: PageView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         onPageChanged: (value) {
                           myObj.changeCurrentTextOfPage(value);
                           myObj.isLastOrNot(value - 1);
@@ -86,7 +86,7 @@ class QuizScreen extends StatelessWidget {
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ScoreScreen(),
+                                  builder: (context) => const ScoreScreen(),
                                 ),
                                 (route) => false);
                           }
@@ -94,7 +94,6 @@ class QuizScreen extends StatelessWidget {
                         controller: myObj.pageController,
                         itemCount: questions.length + 1,
                         itemBuilder: (context, index) {
-                          print(index);
                           return index == questions.length
                               ? Container()
                               : QuestionCard(

@@ -3,7 +3,7 @@ import 'package:quiz_app/screen/quiz_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({Key? key}) : super(key: key);
-  TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Spacer(flex: 2),
+                    const Spacer(flex: 2),
                     Text(
                       "Let's Play Quiz,",
                       style: Theme.of(context)
@@ -32,13 +32,13 @@ class WelcomeScreen extends StatelessWidget {
                           .copyWith(
                               color: Colors.white, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 5),
-                    Text(
+                    const SizedBox(height: 5),
+                    const Text(
                       "Enter your informations below",
                       style: TextStyle(
                           color: Colors.grey, fontWeight: FontWeight.bold),
                     ),
-                    Spacer(), // 1/6
+                    const Spacer(), // 1/6
                     TextFormField(
                       controller: _nameController,
                       cursorColor: Colors.amber,
@@ -51,10 +51,10 @@ class WelcomeScreen extends StatelessWidget {
                           return null;
                         }
                       },
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         filled: true,
                         fillColor: Color(0xFF1C2341),
                         hintStyle: TextStyle(
@@ -68,32 +68,33 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
-                        if (_formKey.currentState!.validate())
+                        if (_formKey.currentState!.validate()) {
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => QuizScreen(),
+                                builder: (context) => const QuizScreen(),
                               ),
                               (route) => false);
+                        }
                       },
                       child: Container(
                         width: double.infinity,
                         alignment: Alignment.center,
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0xFF46A0AE),
-                              Color(0xFF00FFCB),
+                              const Color(0xFF46A0AE),
+                              const Color(0xFF00FFCB),
                               Colors.blueAccent.withOpacity(.6),
                             ],
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                           ),
-                          borderRadius: BorderRadius.all(
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(12),
                           ),
                         ),

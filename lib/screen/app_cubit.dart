@@ -11,6 +11,7 @@ class AppCubit extends Cubit<AppState> {
 
   static AppCubit get(context) => BlocProvider.of(context);
   PageController pageController = PageController(initialPage: 0);
+  // ignore: non_constant_identifier_names
   List sample_data = [
     {
       "id": 1,
@@ -69,9 +70,9 @@ class AppCubit extends Cubit<AppState> {
       isAns = true;
       isCorrectAns = true;
       emit(DisplayIconOfAns());
-      Future.delayed(Duration(seconds: 2)).then((value) {
+      Future.delayed(const Duration(seconds: 2)).then((value) {
         pageController.nextPage(
-            duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+            duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
         isAns = false;
         isCorrectAns = false;
       });
@@ -80,9 +81,9 @@ class AppCubit extends Cubit<AppState> {
     } else {
       isAns = true;
       emit(DisplayIconOfAns());
-      Future.delayed(Duration(seconds: 2)).then((value) {
+      Future.delayed(const Duration(seconds: 2)).then((value) {
         pageController.nextPage(
-            duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+            duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
         isAns = false;
       });
       isLastOrNot(index);
@@ -91,10 +92,11 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void isLastOrNot(int index) {
-    if (index == question.length - 1)
+    if (index == question.length - 1) {
       isLast = true;
-    else
+    } else {
       isLast = false;
+    }
   }
 
   bool changeIconeAfterAns(int innerIndex, int index) {
