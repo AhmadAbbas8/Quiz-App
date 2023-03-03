@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quiz_app/questions_model.dart';
+import 'package:quiz_app/screen/app_cubit.dart';
 
 class QuizScreen extends StatelessWidget {
   QuizScreen({Key? key}) : super(key: key);
-  PageController pageController = PageController(initialPage: 2);
+  PageController pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+  create: (context) => AppCubit()..getQuestion(),
+  child: BlocConsumer<AppCubit, AppState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+   List<QuestionModel> questions =  AppCubit.get(context).question;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -16,7 +27,9 @@ class QuizScreen extends StatelessWidget {
           MaterialButton(
             onPressed: () {
               pageController.nextPage(
-                  duration: Duration(milliseconds: 360), curve: Curves.ease);
+                duration: Duration(milliseconds: 360),
+                curve: Curves.ease,
+              );
             },
             child: Text(
               'skip'.toUpperCase(),
@@ -104,9 +117,9 @@ class QuizScreen extends StatelessWidget {
                 Divider(thickness: 5),
                 Expanded(
                   child: PageView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    // physics: NeverScrollableScrollPhysics(),
                     controller: pageController,
-                    itemCount: 15,
+                    itemCount: questions.length,
                     itemBuilder: (context, index) {
                       print(index);
                       return Container(
@@ -121,14 +134,14 @@ class QuizScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              'Flutter is an open-source UI software development kit created by ______',
+                              questions[index].question,
                               style: TextStyle(
                                   fontWeight: FontWeight.w500, fontSize: 20),
                             ),
                             SizedBox(height: 10),
                             ...List.generate(
-                              4,
-                              (index) => InkWell(
+                              questions[index].options.length,
+                              (innerIndex) => InkWell(
                                 onTap: () {},
                                 child: Container(
                                   margin: EdgeInsets.only(top: 20),
@@ -142,7 +155,7 @@ class QuizScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        '${index + 1} - Apple',
+                                        '${index + 1} - ${questions[index].options[innerIndex]}',
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.grey[900]),
@@ -178,5 +191,8 @@ class QuizScreen extends StatelessWidget {
         ],
       ),
     );
+  },
+),
+);
   }
 }
